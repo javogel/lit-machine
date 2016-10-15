@@ -1,0 +1,100 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.3/p5.min.js"></script>
+  <script src="./rita.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+
+  var lines, markov, data1, data2, x = 160, y = 240;
+
+
+
+  function preload() {
+
+    data1 = loadStrings('./data/plata.txt');
+    data2 = loadStrings('./data/wit.txt');
+  }
+
+  function setup() {
+
+    // createCanvas(windowWidth, windowHeight);
+
+
+    // textFont('times', 16);
+    // textAlign(LEFT);
+
+    // drawText()
+
+                  //   lines = ["Plata con"];
+                  //   lines2 = ["Platica!"];
+                  //
+                  // fill(195, 75, 159);
+                  // strokeWeight(0);
+                  // textSize(150);
+                  // text(lines.join(' '), 20, 70);
+                  // text(lines2.join(' '), 20, 200);
+
+    // create a markov model w' n=4
+    markov = new RiMarkov(3);
+
+    // load text into the model
+    markov.loadText(data1.join(' '));
+    markov.loadText(data2.join(' '));
+
+
+  }
+
+  // function drawText() {
+  //
+  //   fill(118, 0, 144);
+  //   background('rgba(0,200,10, 0.3)');
+  //
+  //
+  //
+  //
+  //
+  //
+  // }
+
+  // function mouseClicked() {
+  //
+  //   x = y = 200;
+  //   lines = markov.generateSentences(10);
+  //   // drawText();
+  //
+  //   $('#text-box').text(lines);
+  // }
+
+  function touchStarted() {
+
+    x = y = 200;
+    lines = markov.generateSentences(20);
+    // drawText();
+
+    $('#text-box').text(lines);
+     return false;
+  }
+
+
+  // function windowResized() {
+  // 	resizeCanvas(windowWidth, windowHeight);
+  //     drawText();
+  // }
+
+
+  </script>
+
+  <style>
+      canvas { position:fixed; top:0; left:0; z-index: 1; }
+      #container { position:relative; z-index:2; color: white; color: black;}
+  </style>
+</head?
+  <body>
+    <div id="container">
+      <div id="text-box">
+
+      </div>
+    </div>
+  </body>
+</html>
