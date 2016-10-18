@@ -12,20 +12,15 @@
 
   function preload() {
 
-    data1 = loadStrings('./data/plata.txt');
+    data1 = loadStrings('./data/DarioAzul.txt');
     data2 = loadStrings('./data/wit.txt');
   }
 
   function setup() {
-
     // createCanvas(windowWidth, windowHeight);
-
-
     // textFont('times', 16);
     // textAlign(LEFT);
-
     // drawText()
-
                   //   lines = ["Plata con"];
                   //   lines2 = ["Platica!"];
                   //
@@ -36,13 +31,10 @@
                   // text(lines2.join(' '), 20, 200);
 
     // create a markov model w' n=4
-    markov = new RiMarkov(3);
-
+    markov = new RiMarkov(2);
     // load text into the model
     markov.loadText(data1.join(' '));
     markov.loadText(data2.join(' '));
-
-
   }
 
   // function drawText() {
@@ -58,21 +50,19 @@
   // }
 
   // function mouseClicked() {
-  //
-  //   x = y = 200;
-  //   lines = markov.generateSentences(10);
+  //   lines = markov.generateSentences(1);
   //   // drawText();
   //
   //   $('#text-box').text(lines);
+  //    return false;
   // }
 
   function touchStarted() {
-
-    x = y = 200;
-    lines = markov.generateSentences(20);
+    lines = markov.generateSentences(1);
     // drawText();
 
     $('#text-box').text(lines);
+     console.log("helllo")
      return false;
   }
 
@@ -88,6 +78,9 @@
   <style>
       canvas { position:fixed; top:0; left:0; z-index: 1; }
       #container { position:relative; z-index:2; color: white; color: black;}
+      #text-box {
+        font-size: 28px;
+      }
   </style>
 </head?
   <body>
